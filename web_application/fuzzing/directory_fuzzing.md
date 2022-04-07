@@ -25,6 +25,16 @@ At most of sites, there exists the index file, so in the above example we're abo
 
 ## Recursive fuzzing
 
-To carry out a recursive fuzzing for discover files and sub-folders recursively, type:
+To carry out a recursive fuzzing for discover files and sub-folders recursively, type the following command:
 
+```
 ffuf -w /usr/share/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt:FUZZ -u $target/FUZZ  -recursion --recursion-depth 3 -e .php -r -fs 0,10242423424
+```
+
+## Sub-domains
+
+In order to discover the target sub-domains, type the folowwing command :
+
+```
+ffuf -w /usr/share/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://FUZZ.$target
+```
