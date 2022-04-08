@@ -38,3 +38,11 @@ In order to discover the target sub-domains, type the folowwing command :
 ```
 ffuf -w /usr/share/SecLists/Discovery/DNS/subdomains-top1million-5000.txt:FUZZ -u http://FUZZ.$target
 ```
+
+## GET parameter fuzzing
+
+In order to discover wether GET parameter is accepted not not, type the folowwing command :
+
+```
+ffuf -w /usr/share/SecLists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u http://admin.academy.htb:$port/admin/admin.php?FUZZ=key -fs 0,0
+```
