@@ -10,3 +10,11 @@ In order to install it, open the terminal and type:
 
  ```
 Or download it from (GitHub Repository)[https://github.com/Mebus/cupp]
+
+## Username Anarchy
+
+In order to install it, open the terminal and type:
+ ```
+git clone https://github.com/urbanadventurer/username-anarchy
+ 
+ ```
