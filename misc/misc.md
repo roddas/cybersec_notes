@@ -2,6 +2,10 @@
 
 This session explains miscelaneous tools
 
+## Google Hacking Database
+ - [Exploit DB](https://www.exploit-db.com/google-hacking-database/)
+
+
 ## Data dumps tools
 
 To install the h8mail, open the terminal and type:
