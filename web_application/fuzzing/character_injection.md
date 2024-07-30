@@ -1,4 +1,4 @@
-# Character Injection
+# PHP and ASP Character Injection
 
 To generate a wordlist , open the terminal and execute:
 
