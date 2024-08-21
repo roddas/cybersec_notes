@@ -27,3 +27,4 @@ The following are additional tools that allow you to search for breach data dump
  - [Scavenger](https://github.com/rndinfosecguy/Scavenger)
  - [PwnDB](https://github.com/davidtavarez/pwndb)
  - [BrakeMan](https://github.com/presidentbeef/brakeman)
+ - [Bashfuscator](https://github.com/Bashfuscator/Bashfuscator)
