@@ -74,9 +74,12 @@ alias runserver='/home/noob/run_server.sh&'
 alias unseal="sudo bash /etc/vault.d/unseal.sh"
 alias get_token="sudo bash /etc/vault.d/get_root_token.sh"
 alias login_root="sudo bash /etc/vault.d/login_root.sh"
+alias get_user_token="sudo cat /etc/vault.d/user.txt"
 alias runserver="$HOME/run_server.sh&"
 
 ```
+
+Configure the  vault and stores the user token on *user.txt* and type **sudo chmod 600 user.txt** to remove any capability to any user but root .
 
 ## Crontab
 
