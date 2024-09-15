@@ -64,6 +64,13 @@ ui = true
 
 ```
 
+#### admin.hcl
+
+```
+path "*" {
+    capabilities = [ "create", "read", "update", "delete", "list" , "sudo"]
+}
+```
 
 ## Alias
 
