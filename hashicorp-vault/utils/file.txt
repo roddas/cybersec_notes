@@ -1,5 +1,0 @@
-roddas PASS dev
-amoedo PASS dados
-larissa PASS produto
-artur PASS infra
-leo PASS admin
