@@ -1,6 +1,9 @@
 # Miscelaneous 
 
 This session explains miscelaneous tools
+## Search Engines
+ - [CRT](https://crt.sh/)
+ - [Censys](https://search.censys.io/)
 
 ## Google Hacking Database
  - [Exploit DB](https://www.exploit-db.com/google-hacking-database/)
