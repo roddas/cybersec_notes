@@ -9,16 +9,19 @@
 3. **Nmap - Network Mapper**  
    Ferramenta open-source para exploração de redes e auditoria de segurança.
 
-4. **Postfix SMTP Open Relay**  
+4. **Open Relay**  
+   Servidor de e-mail configurado de forma inadequada que permite o envio de e-mails de qualquer remetente, frequentemente explorado para spam.
+
+5. **Postfix SMTP Open Relay**  
    Configuração incorreta do servidor de e-mails Postfix que permite o envio de mensagens não autorizadas, sendo frequentemente explorada para spam.
 
-5. **Sender Policy Framework (SPF)**  
+6. **Sender Policy Framework (SPF)**  
    Método de autenticação de e-mails que especifica quais servidores estão autorizados a enviar e-mails em nome de um domínio.
 
-6. **Sistema Operacional Kali Linux**  
+7. **Sistema Operacional Kali Linux**  
    Distribuição Linux de código aberto baseada em Debian que permite aos usuários realizar testes avançados de penetração e auditoria de segurança.
 
-7. **Telnet**  
+8. **Telnet**  
    Protocolo de rede que permite a comunicação remota em texto simples entre computadores, geralmente considerado inseguro devido à falta de criptografia.
 
 ---
@@ -34,6 +37,8 @@
 - Microsoft. *Telnet Overview*. Disponível em: [https://learn.microsoft.com/en-us/windows-server/administration/telnet/telnet-overview](https://learn.microsoft.com/en-us/windows-server/administration/telnet/telnet-overview). Acesso em: 18 dez. 2024.
 
 - Nmap Reference Guide. Disponível em: [https://nmap.org/book/man.html#man-description](https://nmap.org/book/man.html#man-description). Acesso em: 18 dez. 2024.
+
+- Open Relay Overview. *Understanding Open Relays*. Disponível em: [https://www.mailchannels.com/knowledge/open-relay/](https://www.mailchannels.com/knowledge/open-relay/). Acesso em: 18 dez. 2024.
 
 - OpenSPF. *Introduction to SPF*. Disponível em: [http://www.openspf.org/](http://www.openspf.org/). Acesso em: 18 dez. 2024.
 
