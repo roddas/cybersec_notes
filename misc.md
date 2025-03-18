@@ -40,3 +40,86 @@ docker  build -t roddascabral/conversao-temperatura:v1 . --push
 ```
 kubectl api-resources # para saber quais versões utilizar
 ``` 
+Aplicação simplems com load balancer
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubenews
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kubenews
+  template:
+    metadata:
+      labels:
+        app: kubenews
+    spec:
+      containers:
+      - name: kubenews
+        image: roddascabral/aula-kube-news:v1
+        ports:
+        - containerPort: 8080
+          name: kubenews-port
+        env:
+          - name: DB_USERNAME
+            value: "pguser"
+          - name: DB_HOST
+            value: "postgres"
+          - name: DB_PASSWORD
+            value: "pgpass"
+          - name: DB_DATABASE
+            value: "pgdb"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubenews
+spec:
+  selector:
+    app: kubenews
+  ports:
+  - port: 8080 # Dentro do Cluster
+    targetPort: kubenews-port # Quando receber a requisição na 80, reencaminha para a porta do container
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15.0
+        ports:
+        - containerPort: 5432
+        env:
+          - name: POSTGRES_USER
+            value: "pguser"
+          - name: POSTGRES_PASSWORD
+            value: "pgpass"
+          - name: POSTGRES_DB
+            value: "pgdb"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  selector:
+    app: postgres
+  ports:
+  - port: 5432
+    targetPort: 5432
+```
+
