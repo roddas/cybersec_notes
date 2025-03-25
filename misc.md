@@ -29,7 +29,7 @@ kubectl rollout undo deploy meudeployment && watch 'kubectl get deploy,rs,po'
 
 1 - Criar o cluster:
 ```
-k3d cluster create meucluster --servers 3 --agents 3 -p "30000:30000@loadbalancer"
+k3d cluster create meucluster --servers 3 --agents 3 -p "8080:8080@loadbalancer"
 ```
 
 2 - Criar a imagem Docker (já deve estar publicada em algum Docker Regisry)
@@ -45,81 +45,45 @@ Aplicação simplems com load balancer
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubenews
+  name: simulador
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: kubenews
+      app: simulador
   template:
     metadata:
       labels:
-        app: kubenews
+        app: simulador
     spec:
+      restartPolicy: Always
       containers:
-      - name: kubenews
-        image: roddascabral/aula-kube-news:v1
+      - name: simulador
+        imagePullPolicy: IfNotPresent
+        image: kubedevio/simulador-do-caos:v1
         ports:
-        - containerPort: 8080
-          name: kubenews-port
-        env:
-          - name: DB_USERNAME
-            value: "pguser"
-          - name: DB_HOST
-            value: "postgres"
-          - name: DB_PASSWORD
-            value: "pgpass"
-          - name: DB_DATABASE
-            value: "pgdb"
+        - containerPort: 3000
+          name: simulador-port
+        livenessProbe:
+          httpGet:
+            port: 3000
+            path: /health # Implementar endpoint de healthcheck (conexão com os outros componentes da aplicação)
+          initialDelaySeconds: 5 
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 3
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kubenews
+  name: simulador
 spec:
   selector:
-    app: kubenews
+    app: simulador
   ports:
   - port: 8080 # Dentro do Cluster
-    targetPort: kubenews-port # Quando receber a requisição na 80, reencaminha para a porta do container
+    targetPort: simulador-port # Quando receber a requisição na 80, reencaminha para a porta do container
   type: LoadBalancer
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: postgres
-spec:
-  selector:
-    matchLabels:
-      app: postgres
-  template:
-    metadata:
-      labels:
-        app: postgres
-    spec:
-      containers:
-      - name: postgres
-        image: postgres:15.0
-        ports:
-        - containerPort: 5432
-        env:
-          - name: POSTGRES_USER
-            value: "pguser"
-          - name: POSTGRES_PASSWORD
-            value: "pgpass"
-          - name: POSTGRES_DB
-            value: "pgdb"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres
-spec:
-  selector:
-    app: postgres
-  ports:
-  - port: 5432
-    targetPort: 5432
 ```
 
