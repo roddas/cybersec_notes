@@ -6,7 +6,8 @@ To perform a DNS lookup, open the terminal and type:
 ```
 dnsrecon -d [site]
 ```
-
+[
+Living Off The Land Binaries, Scripts and Libraries](https://lolbas-project.github.io/)
 
 ## Kubernetes
 
