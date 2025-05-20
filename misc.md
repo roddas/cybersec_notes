@@ -1,6 +1,7 @@
 # Misc notes
 ## Useful tools
  * [git-dumper](https://github.com/arthaud/git-dumper)
+ * [trufflehog](https://github.com/trufflesecurity/trufflehog)
 
 ## DNS Lookup
 
