@@ -1,4 +1,6 @@
 # Misc notes
+## Useful tools
+ * [git-dumper](https://github.com/arthaud/git-dumper)
 
 ## DNS Lookup
 
